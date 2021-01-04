@@ -79,11 +79,15 @@
                 <figure></figure>
               </div>
               <div class="lyrics">
-                <div class="text">
+                <div class="load" v-show="player.state === 'load'"> 
+                  <p>音訊載入中 ...</p>
+                </div>
+                <div class="text" v-show="player.state !== 'load'">
                   <p>{{player.lyrics}}</p>
                 </div>
               </div>
               <div class="tool">
+                <button class="btn load" v-show="player.state === 'load'"><span class="icon"></span></button>
                 <button class="btn play" v-show="player.state === 'pause'" v-on:click="audioPlay"><span class="icon"></span></button>
                 <button class="btn pause" v-show="player.state === 'play'" v-on:click="audioPause"><span class="icon"></span></button>
                 <button class="btn stop" v-on:click="audioStop"><span class="icon"></span></button>
