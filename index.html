@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="">
+    <meta name="description" content="《端傳媒》採訪 35 位台灣人，提出三個政治提問——統獨、戰爭和中華民國——因為容易引發爭議，平時許多台灣人不願輕易向外人暢談的話題。這次我們以聲音媒材的方式，讓你聽見台灣人藏在心中，關於國家、認同與戰爭的回憶與秘密。">
     <meta property="fb:app_id" content="">
     <meta property="og:title" content="【聲音劇場】統或獨？戰或走？台灣人心中的一百個祕密｜端傳媒 Initium Media">
     <meta property="og:type" content="website">
@@ -12,7 +12,7 @@
     <meta property="og:image" content="https://theinitium.com/project/20210104-taiwan-my-hometown-my-secrets/img/thumb.jpg">
     <meta property="og:image:alt" content="【聲音劇場】統或獨？戰或走？台灣人心中的一百個祕密｜端傳媒 Initium Media">
     <meta property="og:site_name" content="【聲音劇場】統或獨？戰或走？台灣人心中的一百個祕密｜端傳媒 Initium Media">
-    <meta property="og:description" content="">
+    <meta property="og:description" content="《端傳媒》採訪 35 位台灣人，提出三個政治提問——統獨、戰爭和中華民國——因為容易引發爭議，平時許多台灣人不願輕易向外人暢談的話題。這次我們以聲音媒材的方式，讓你聽見台灣人藏在心中，關於國家、認同與戰爭的回憶與秘密。">
     <title>【聲音劇場】統或獨？戰或走？台灣人心中的一百個祕密｜端傳媒 Initium Media</title>
     <link rel="shortcut icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/app.min.css">
@@ -48,14 +48,16 @@
               </div>
             </section>
             <div class="egg">
-              <div class="text">
-                <div class="content" v-html="player.egg"></div>
-                <div class="buttons">
-                  <button class="btn close" v-on:click="audioStop"><span class="icon"></span></button>
+              <div class="container">
+                <div class="text">
+                  <div class="content" v-html="player.egg" ref="eggContent"></div>
+                  <div class="buttons">
+                    <button class="btn close" v-on:click="audioStop"><span class="icon"></span></button>
+                  </div>
                 </div>
-              </div>
-              <div class="cover">
-                <div class="puppet" :id="`puppet-${player.id}`"></div>
+                <div class="puppet" :id="`puppet-${player.id}`">
+                  <figure></figure>
+                </div>
               </div>
             </div>
             <div class="player">
@@ -78,23 +80,37 @@
             <section class="intro">
               <div class="container intro-1">
                 <div class="row justify-content-center">
-                  <div class="col-8">
-                    <p class="p-1">2020年，全球被疫情籠罩，台灣因防疫成功、台美關係升溫，集體認同快速凝聚，形成以「台灣」為名的政治共同體。同時，幾份民調也顯示，「我是台灣人」認同度創史上新高，以及若遭遇武力攻擊，願意上戰場的民眾也高達八成。</p>
-                    <p class="p-2">然而，「台灣」代表的意義為何？一百個台灣人，或許有一百種答案。為了解讀民調後的台灣心聲，《端傳媒》採訪 35 位台灣人，提出三個政治提問——統獨、戰爭和中華民國——因為容易引發爭議，平時許多台灣人不願輕易向外人暢談的話題。這次我們以聲音媒材的方式，讓你聽見台灣人藏在心中，關於國家、認同與戰爭的回憶與秘密。</p>
+                  <div class="col-12 col-md-10 col-lg-8">
+                    <p>2020年，全球被疫情籠罩，台灣因防疫成功、台美關係升溫，集體認同快速凝聚，形成以「台灣」為名的政治共同體。同時，幾份民調也顯示，「我是台灣人」認同度創史上新高，以及若遭遇武力攻擊，願意上戰場的民眾也高達八成。</p>
+                    <p>然而，「台灣」代表的意義為何？一百個台灣人，或許有一百種答案。為了解讀民調後的台灣心聲，《端傳媒》採訪 35 位台灣人，提出三個政治提問——統獨、戰爭和中華民國——因為容易引發爭議，平時許多台灣人不願輕易向外人暢談的話題。這次我們以聲音媒材的方式，讓你聽見台灣人藏在心中，關於國家、認同與戰爭的回憶與秘密。</p>
                   </div>
                 </div>
               </div>
               <div class="container intro-2">
                 <h3>操作說明</h3>
-                <div class="row">
-                  <div class="col-4 align-self-end">
-                    <figure class="img-1"><img class="img-fluid" src="img/exp-1.svg"></figure>
+                <div class="row d-none d-lg-flex align-items-end">
+                  <div class="col-4">
+                    <figure><img class="img-fluid" src="img/exp-1.svg"></figure>
                   </div>
-                  <div class="col-4 align-self-end">
-                    <figure class="img-2"><img class="img-fluid" src="img/exp-2.svg"></figure>
+                  <div class="col-4">
+                    <figure><img class="img-fluid" src="img/exp-2.svg"></figure>
                   </div>
-                  <div class="col-4 align-self-end">
-                    <figure class="img-3"><img class="img-fluid" src="img/exp-3.svg"></figure>
+                  <div class="col-4">
+                    <figure><img class="img-fluid" src="img/exp-3.svg"></figure>
+                  </div>
+                </div>
+                <div class="row d-lg-none align-items-end">
+                  <div class="col-6">
+                    <figure><img class="img-fluid" src="img/exp-1-m.svg"></figure>
+                  </div>
+                  <div class="col-6">
+                    <figure><img class="img-fluid" src="img/exp-2-m.svg"></figure>
+                  </div>
+                  <div class="col-6">
+                    <figure><img class="img-fluid" src="img/exp-3-m.svg"></figure>
+                  </div>
+                  <div class="col-6">
+                    <figure><img class="img-fluid" src="img/exp-4-m.svg"></figure>
                   </div>
                 </div>
               </div>
