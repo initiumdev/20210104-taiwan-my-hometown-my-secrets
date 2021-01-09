@@ -37,16 +37,42 @@
         <div class="container"></div>
       </nav>
       <main class="index" id="main">
-        <section class="loading">
-          <div class="logo"><a href="https://theinitium.com/"></a></div>
-          <div class="share"><a class="facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Ftheinitium.com%2Fproject%2F20210104-taiwan-my-hometown-my-secrets/" target="_blank"></a><a class="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheinitium.com%2Fproject%2F20210104-taiwan-my-hometown-my-secrets/" target="_blank"></a></div>
-          <div class="container">
-            <h1>統一或獨立？戰爭或逃兵？台灣人心底的100個秘密</h1>
-            <p>本頁面以聲音體驗為主<br>將自動播放採訪聲音檔案</p>
-          </div>
-          <div class="tips"><span>scroll down</span></div>
-        </section>
-        <div class="stage">
+        <div class="stage stage-1">
+          <section class="loading">
+            <div class="logo"><a href="https://theinitium.com/"></a></div>
+            <div class="share"><a class="facebook" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Ftheinitium.com%2Fproject%2F20210104-taiwan-my-hometown-my-secrets/" target="_blank"></a><a class="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheinitium.com%2Fproject%2F20210104-taiwan-my-hometown-my-secrets/" target="_blank"></a></div>
+            <div class="container">
+              <div class="title">
+                <div class="title-1">
+                  <figure><img class="img-fluid" src="img/title-1.svg"></figure>
+                </div>
+                <div class="title-2">
+                  <figure><img class="img-fluid" src="img/title-2.svg"></figure>
+                </div>
+                <div class="title-3">
+                  <figure><img class="img-fluid" src="img/title-3-1.svg"></figure>
+                  <figure><img class="img-fluid" src="img/title-3-2.svg"></figure>
+                  <figure><img class="img-fluid" src="img/title-3-3.svg"></figure>
+                </div>
+                <h1>統一或獨立？戰爭或逃兵？台灣人心底的100個秘密</h1>
+              </div>
+              <div class="content">
+                <div class="text">
+                  <p>本頁面以聲音體驗為主<br>將自動播放採訪聲音檔案</p>
+                </div>
+                <div class="audio">
+                  <div class="wave" :class="intro.state === 'play'?'active':''"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="tool">
+                    <button class="btn play" v-show="intro.state === 'stop'" v-on:click="introState('play')"><span class="icon"></span></button>
+                    <button class="btn stop" v-show="intro.state === 'play'" v-on:click="introState('stop')"><span class="icon"></span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tips"><span>scroll down</span></div>
+          </section>
+        </div>
+        <div class="stage stage-2">
           <div class="scene z-0">
             <section class="puppets" @mousemove="hozMove" ref="puppets">
               <div class="container">
@@ -64,9 +90,9 @@
             <div class="egg">
               <div class="container">
                 <div class="text">
-                  <div class="content" v-html="player.egg" ref="eggContent"></div>
+                  <div class="content" v-html="player.egg" ref="eggContent" body-scroll-lock-ignore></div>
                   <div class="buttons">
-                    <button class="btn close" v-on:click="audioStop"><span class="icon"></span></button>
+                    <button class="btn close" v-on:click="changeState('stop')"><span class="icon"></span></button>
                   </div>
                 </div>
                 <div class="puppet" :id="`puppet-${player.id}`">
@@ -88,9 +114,9 @@
               </div>
               <div class="tool">
                 <button class="btn load" v-show="player.state === 'load'"><span class="icon"></span></button>
-                <button class="btn play" v-show="player.state === 'pause'" v-on:click="audioPlay"><span class="icon"></span></button>
-                <button class="btn pause" v-show="player.state === 'play'" v-on:click="audioPause"><span class="icon"></span></button>
-                <button class="btn stop" v-on:click="audioStop"><span class="icon"></span></button>
+                <button class="btn play" v-show="player.state === 'pause'" v-on:click="changeState('play')"><span class="icon"></span></button>
+                <button class="btn pause" v-show="player.state === 'play'" v-on:click="changeState('pause')"><span class="icon"></span></button>
+                <button class="btn stop" v-on:click="changeState('stop')"><span class="icon"></span></button>
               </div>
             </div>
           </div>
