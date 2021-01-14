@@ -63,8 +63,8 @@
                 <div class="audio">
                   <div class="wave" :class="intro.state === 'play'?'active':''"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
                   <div class="tool">
-                    <button class="btn play" v-show="intro.state === 'stop'" v-on:click="introState('play')"><span class="icon"></span></button>
-                    <button class="btn stop" v-show="intro.state === 'play'" v-on:click="introState('stop')"><span class="icon"></span></button>
+                    <button class="btn play" v-show="intro.state === 'stop'" v-on:click="introAction('play')"><span class="icon"></span></button>
+                    <button class="btn stop" v-show="intro.state === 'play'" v-on:click="introAction('stop')"><span class="icon"></span></button>
                   </div>
                 </div>
               </div>
@@ -92,7 +92,7 @@
                 <div class="text">
                   <div class="content" v-html="player.egg" ref="eggContent" body-scroll-lock-ignore></div>
                   <div class="buttons">
-                    <button class="btn close" v-on:click="changeState('stop')"><span class="icon"></span></button>
+                    <button class="btn close" v-on:click="playerAction('stop')"><span class="icon"></span></button>
                   </div>
                 </div>
                 <div class="puppet" :id="`puppet-${player.id}`">
@@ -105,18 +105,18 @@
                 <figure></figure>
               </div>
               <div class="lyrics">
-                <div class="load" v-show="player.state === 'load'"> 
+                <div class="load" v-show="isLoading"> 
                   <p>音訊載入中 ...</p>
                 </div>
-                <div class="text" v-show="player.state !== 'load'">
+                <div class="text" v-show="!isLoading">
                   <p>{{player.lyrics}}</p>
                 </div>
               </div>
               <div class="tool">
-                <button class="btn load" v-show="player.state === 'load'"><span class="icon"></span></button>
-                <button class="btn play" v-show="player.state === 'pause'" v-on:click="changeState('play')"><span class="icon"></span></button>
-                <button class="btn pause" v-show="player.state === 'play'" v-on:click="changeState('pause')"><span class="icon"></span></button>
-                <button class="btn stop" v-on:click="changeState('stop')"><span class="icon"></span></button>
+                <button class="btn load" v-show="isLoading"><span class="icon"></span></button>
+                <button class="btn play" v-show="player.state === 'pause' &amp;&amp; !isLoading" v-on:click="playerAction('play')"><span class="icon"></span></button>
+                <button class="btn pause" v-show="player.state === 'play' &amp;&amp; !isLoading" v-on:click="playerAction('pause')"><span class="icon"></span></button>
+                <button class="btn stop" v-on:click="playerAction('stop')"><span class="icon"></span></button>
               </div>
             </div>
           </div>
