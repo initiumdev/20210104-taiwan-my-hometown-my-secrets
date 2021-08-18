@@ -80,9 +80,9 @@
                   <div class="title">
                     <h4>{{key | filterName}}</h4>
                   </div>
-                  <div class="puppet" v-for="(puppet, key) in group" :key="key" :id="`puppet-${puppet.gsx$uuid.$t}`">
-                    <figure v-on:click="kickPuppet(puppet.gsx$uuid.$t)"></figure>
-                    <div class="info">{{puppet.gsx$name.$t}}</div>
+                  <div class="puppet" v-for="(puppet, key) in group" :key="key" :id="`puppet-${puppet.uuid}`">
+                    <figure v-on:click="kickPuppet(puppet.uuid)"></figure>
+                    <div class="info">{{puppet.name}}</div>
                   </div>
                 </div>
               </div>
